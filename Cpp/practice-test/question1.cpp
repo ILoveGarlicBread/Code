@@ -26,13 +26,19 @@ public:
 };
 int main() {
   Complex a(1.0, 2.0), b(3.0, 4.0);
+  cout << "a: ";
   a.describe();
+  cout << "b: ";
   b.describe();
   Complex c = a + b;
+  cout << "c=a+b: ";
   c.describe();
   cout << "Comparison between a and b: " << (a == b) << endl;
   Complex d = a;
+  cout << "d=a: ";
+  d.describe();
   cout << "Comparison between a and d: " << (a == d) << endl;
+  cout << "Changing value of a to b's" << endl;
   a = b;
   cout << "Comparison between a and d: " << (a == d) << endl;
   cout << endl;
