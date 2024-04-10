@@ -3,12 +3,16 @@
 #include <string>
 using namespace std;
 class Bird {
-public:
+protected:
   string name;
   string food;
   virtual void fly() = 0;
   virtual void eat() = 0;
   virtual void swim() = 0;
+
+private:
+  string conspiracy =
+      "Birds are actually robots created by the government for spying";
 };
 class FlyingBird : public Bird {
 public:
