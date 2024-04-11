@@ -6,6 +6,8 @@ class Bird {
 protected:
   string name;
   string food;
+
+public:
   virtual void fly() = 0;
   virtual void eat() = 0;
   virtual void swim() = 0;
