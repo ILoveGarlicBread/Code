@@ -1,41 +1,36 @@
 #include <iostream>
+
+#include <vector>
 using namespace std;
 
-class Square {
-  int side;
-
-public:
-  Square(int s) { this->side = s; }
-  int getArea() { return side * side; }
-};
-
-class Rectangle {
-  int width, height;
-
-public:
-  Rectangle(int w, int h) {
-    this->width = w;
-    this->height = h;
+void print_vector(const vector<int> &v) {
+  for (const int &i : v) {
+    cout << i << "  ";
   }
-  int getArea() { return width * height; }
-};
-
-class Canvas {
-public:
-  void showArea(Square *s) {
-    cout << "Area of Square: " << s->getArea() << endl;
-  };
-  void showArea(Rectangle *r) {
-    cout << "Area of Rectangle: " << r->getArea() << endl;
-  };
-};
-
+  cout << endl;
+}
 int main() {
-  Square s(5);
-  Rectangle r(4, 3);
-  Canvas canvas;
-  canvas.showArea(&s);
-  canvas.showArea(&r);
+  vector<int> v = {1, 2, 3, 4, 5};
+  print_vector(v);
+  // Add element at the end
+  v.push_back(6);
+  print_vector(v);
+  // Access elements
+  cout << "Element at index 2: " << v.at(2) << endl;
+  // Modify elements
+  cout << "Modify element at index 0" << endl;
+  v.at(0) = 0;
+  print_vector(v);
+  // remove the last element
+  v.pop_back();
+  print_vector(v);
+  // size(), capacity()
+  cout << "Size of vector: " << v.size() << endl;
+  cout << "Capacity of vector: " << v.capacity() << endl;
+  // front(), back()
+  cout << "First and last element in vector: " 
+       << v.front() << " & " << v.back()
+       << endl;
   cout << endl;
   return 0;
 }
