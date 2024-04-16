@@ -1,0 +1,15 @@
+Screen {
+    layout: grid;
+    grid-size: 2;
+    grid-columns: 1fr 10fr;
+    grid-rows: 1fr 10fr;
+    grid-gutter: 0;
+}
+#header {
+  column-span: 2;
+  height: 3;
+}
+.box {
+    height: 100%;
+    border: white;
+}
