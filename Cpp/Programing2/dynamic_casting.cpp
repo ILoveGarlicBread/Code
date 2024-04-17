@@ -30,14 +30,16 @@ public:
   Canvas() {}
   void addShape(Shape *shape) { shapes.push_back(shape); }
   vector<Square *> getSquares() {
-    vector<Square *> squares;
-    for (Shape *shape : shapes) {
-      Square *square = dynamic_cast<Square *>(shape);
-      if (square) {
+    vector<Square *> squares;     // Initialize empty vector to store squares
+    for (Shape *shape : shapes) { // Iterate over all shapes in Canvas object
+      Square *square = dynamic_cast<Square *>(
+          shape);   // Try to cast Shape object to Square object
+      if (square) { // If the cast is successful, add the square to the vector
+
         squares.push_back(square);
       }
     }
-    return squares;
+    return squares; // Return the vector of squares
   }
 };
 
