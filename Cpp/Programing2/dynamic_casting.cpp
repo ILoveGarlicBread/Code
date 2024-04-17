@@ -23,6 +23,14 @@ public:
   }
   float area() { return 0.5 * base * height; }
 };
+
+class Circle : public Shape {
+  int radius;
+
+public:
+  Circle(int radius) : radius(radius){};
+  float area() { return 3.1415 * radius * radius; }
+};
 class Canvas {
   vector<Shape *> shapes;
 
@@ -41,25 +49,47 @@ public:
     }
     return squares; // Return the vector of squares
   }
+  void shapescounts() {
+    int squareCount = 0;
+    int circleCount = 0;
+    int triangleCount = 0;
+    for (Shape *shape : shapes) {
+      if (dynamic_cast<Square *>(shape)) {
+        squareCount++;
+      }
+    }
+    for (Shape *shape : shapes) {
+      if (dynamic_cast<Circle *>(shape)) {
+        circleCount++;
+      }
+    }
+    for (Shape *shape : shapes) {
+      if (dynamic_cast<Triangle *>(shape)) {
+        triangleCount++;
+      }
+    }
+    cout << "Numbe of Squares: " << squareCount << endl;
+    cout << "Numbe of Circles: " << circleCount << endl;
+    cout << "Numbe of Triangle: " << triangleCount << endl;
+  }
 };
-
 int main() {
   Square s(10);
   Triangle t(10, 5);
+  Triangle t1(3, 4);
   Square s1(20);
   Square s2(30);
+  Circle c(5);
 
   int count = 0;
   Canvas canvas;
   canvas.addShape(&s);
   canvas.addShape(&t);
+  canvas.addShape(&t1);
   canvas.addShape(&s1);
   canvas.addShape(&s2);
-  vector<Square *> squares = canvas.getSquares();
-  for (Square *square : squares) {
-    count++;
-  }
-  cout << "Number of squares: " << count << endl;
+  canvas.addShape(&c);
+  canvas.shapescounts();
   cout << endl;
   return 0;
 }
