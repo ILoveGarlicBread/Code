@@ -1,6 +1,6 @@
 # Getting started
 ## 1. Introduction to IOT 
-[Pre-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/1)
+[Pre-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/1).
 [Post-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/2)
 ## 2. Deeper dive 
 [Pre-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/3)
@@ -30,7 +30,7 @@
 [Post-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/18)
 ## 6. Keep your plant secure 
 [Pre-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/19)
-[Post-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/20)}
+[Post-lecture quiz](https://black-meadow-040d15503.1.azurestaticapps.net/quiz/20)
 
 # Transport 
 ## 1. Location tracking
