@@ -1,12 +1,17 @@
 package main
-import ("fmt")
+
+import (
+	"fmt"
+)
 
 func main() {
-  var num int = 10
-  var text string = "Hello World!"
-  num1 := 20
-
-  fmt.Println(text)
-  fmt.Println(num)
-  fmt.Println(num1)
+	text := "Hello World"
+	word := "Good"
+	word1 := "Morning"
+	num := 10
+	num1 := 20
+	fmt.Print(word, " ", word1, "\n")
+	fmt.Print(num, num1, "\n")
+	fmt.Println(text)
+	fmt.Printf("This is a test %v\n", text)
 }
