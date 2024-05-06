@@ -18,20 +18,23 @@ void deleteNthNode(int position);
 void deleteEnd();
 int searchData(int position);
 char *toString();
+void isReversibleWord();
 
 int main()
 {
-  int num, data, position;
-  printf("Input number of nodes: ");
-  scanf("%d", &num);
-  for(int i =0;i<num;i++)
-  {
-    printf("Input data for node %d: ", i+1);
-    scanf("%d", &data);
-    insertEnd(data);
-  }
-  displayStruct();
-  printf("Linked list in string format: %s", toString());
+ // int num, data, position;
+ // printf("Input number of nodes: ");
+ // scanf("%d", &num);
+ // for(int i =0;i<num;i++)
+ // {
+ //   printf("Input data for node %d: ", i+1);
+ //   scanf("%d", &data);
+ //   insertEnd(data);
+ // }
+ // displayStruct();
+ // printf("Linked list in string format: %s", toString());
+  char word[]= "madam";
+  isReversibleWord();
   printf("\n");
 	return 0;
 }
@@ -159,6 +162,27 @@ void reversedList()
     current = nextNode;
   }
   head = previous;
+}
+void isReversibleWord()
+{
+  struct node *temp = head;
+  int counter = 0;
+  while(temp != NULL)
+  {
+    counter ++;
+    temp = temp->next;
+  }
+  int i = 1;
+  while(i <= counter/2)
+  {
+    if(searchData(i) != searchData(counter-i+1))
+    {
+      printf("Not reversible word.");
+      return;
+    }
+    i++;
+  }
+  printf("Reversible word.");
 }
 
 int countNodes()

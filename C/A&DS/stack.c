@@ -1,80 +1,122 @@
-#include <ctype.h>
+#include <ctype.h> // For isdigit function
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-struct Stack {
-  int data;
-  struct Stack *next;
-};
-typedef struct Stack *nodeptr;
 
-void push(nodeptr *top, int num) {
-  nodeptr newNode = (nodeptr)malloc(sizeof(struct Stack));
-  newNode->data = num;
-  newNode->next = *top;
-  *top = newNode;
+// Structure to represent a stack node
+struct StackNode {
+  int data;
+  struct StackNode *next;
+};
+
+// Function to create a new stack node
+struct StackNode *createNode(int data) {
+  struct StackNode *newNode =
+      (struct StackNode *)malloc(sizeof(struct StackNode));
+  newNode->data = data;
+  newNode->next = NULL;
+  return newNode;
 }
-void pop(nodeptr *top) {
-  nodeptr temp = *top;
-  *top = (*top)->next;
+
+// Function to check if the stack is empty
+int isEmpty(struct StackNode *root) { return !root; }
+
+// Function to push an element onto the stack
+void push(struct StackNode **root, int data) {
+  struct StackNode *newNode = createNode(data);
+  newNode->next = *root;
+  *root = newNode;
+}
+
+// Function to pop an element from the stack
+int pop(struct StackNode **root) {
+  if (isEmpty(*root)) {
+    printf("Stack underflow\n");
+    exit(EXIT_FAILURE);
+  }
+  struct StackNode *temp = *root;
+  *root = (*root)->next;
+  int popped = temp->data;
   free(temp);
+  return popped;
 }
-void printstack(nodeptr top) {
-  while (top != NULL) {
-    printf("%d\n", top->data);
-    top = top->next;
+void decimalToBinary(int n) {
+  struct StackNode *stack = NULL;
+  while (n > 0) {
+    push(&stack, n % 2);
+    n /= 2;
+  }
+  while (!isEmpty(stack)) {
+    printf("%d", pop(&stack));
   }
 }
-void decimaltobinary(int num) {
-  nodeptr stack = NULL;
-  while (num > 0) {
-    push(&stack, num % 2);
-    num = num / 2;
+int areSymbolsBalanced(char *exp) {
+  struct StackNode *stack = NULL;
+  int i = 0;
+  while (exp[i]) {
+    if (exp[i] == '(' || exp[i] == '[' || exp[i] == '{') {
+      push(&stack, exp[i]);
+    } else if (exp[i] == ')' || exp[i] == ']' || exp[i] == '}') {
+      if (isEmpty(stack)) {
+        return 0; // Unbalanced: no opening symbol to match
+      }
+      char top = pop(&stack);
+      if ((exp[i] == ')' && top != '(') || (exp[i] == ']' && top != '[') ||
+          (exp[i] == '}' && top != '{')) {
+        return 0; // Unbalanced: mismatched symbols
+      }
+    }
+    i++;
   }
-  while (stack != NULL) {
-    printf("%d", stack->data);
-    stack = stack->next;
-  }
+  return isEmpty(stack); // Balanced if stack is empty
 }
-void postfixOp(char *postfix) {
-  nodeptr stack = NULL;
-  while (*postfix != '\0')
-    if (isdigit(*postfix)) {
-      push(&stack, *postfix - '0');
-    } else if (*postfix == '+' || *postfix == '-' || *postfix == '*' ||
-               *postfix == '/') {
-      printf("log\n");
-      int num1 = stack->data;
-      printf("log2\n");
-      pop(&stack);
-      int num2 = stack->data;
-      pop(&stack);
-      int num3 = 0;
-      switch (*postfix) {
+
+// Function to evaluate postfix expression
+int evaluatePostfix(char *exp) {
+  struct StackNode *stack = NULL;
+  int i = 0;
+  while (exp[i]) {
+    if (isdigit(exp[i])) {
+      push(&stack, exp[i] - '0');
+      printf("%d\n", exp[i] - '0');
+
+    } else {
+      int val1 = pop(&stack);
+      int val2 = pop(&stack);
+      switch (exp[i]) {
       case '+':
-        num3 = num1 + num2;
+        push(&stack, val2 + val1);
+        printf("%d\n", val2 + val1);
         break;
       case '-':
-        num3 = num1 - num2;
+        push(&stack, val2 - val1);
+        printf("%d\n", val2 - val1);
         break;
       case '*':
-        num3 = num1 * num2;
+        push(&stack, val2 * val1);
+        printf("%d\n", val2 * val1);
         break;
       case '/':
-
-        num3 = num1 / num2;
+        push(&stack, val2 / val1);
+        printf("%d\n", val2 / val1);
         break;
       }
     }
+    i++;
+  }
+  return pop(&stack);
 }
 
+// Example usage
 int main() {
-  // int num;
-  // printf("Enter the number\n");
-  // scanf("%d", &num);
-  // decimaltobinary(num);
-  char math[] = "ab+";
-  postfixOp(math);
-  printf("\n");
+  char exp2[] = "{(2 + 3) * [1 - 5]}"; // Balanced
+  char exp3[] = "(2 + 3) * [1 - 5])";  // Unbalanced
+
+  printf("%s is %s\n", exp2,
+         areSymbolsBalanced(exp2) ? "balanced" : "not balanced");
+  printf("%s is %s\n", exp3,
+         areSymbolsBalanced(exp3) ? "balanced" : "not balanced");
+
+  char exp[] = "562+*124:-";
+  printf("Postfix expression evaluation: %d\n", evaluatePostfix(exp));
   return 0;
 }
