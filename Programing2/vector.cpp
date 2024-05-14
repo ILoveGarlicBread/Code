@@ -28,8 +28,7 @@ int main() {
   cout << "Size of vector: " << v.size() << endl;
   cout << "Capacity of vector: " << v.capacity() << endl;
   // front(), back()
-  cout << "First and last element in vector: " 
-       << v.front() << " & " << v.back()
+  cout << "First and last element in vector: " << v.front() << " & " << v.back()
        << endl;
   cout << endl;
   return 0;
