@@ -1,3 +1,4 @@
+// Basic OOP in C++
 #include <iostream>
 #include <string>
 using namespace std;
@@ -33,5 +34,8 @@ int main() {
   Employee myemployee1("Hannah", 5678, 25);
   myemployee.printinfo();
   myemployee1.printinfo();
+  // output:
+  // Brian's ID is 1234 and 30 years old.
+  // Hannah's ID is 5678 and 25 years old.
   return 0;
 }

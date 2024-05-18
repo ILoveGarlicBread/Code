@@ -1,3 +1,5 @@
+// Function templates allow you to create a generic function
+// that can operate on different data types. 
 #include <iostream>
 using namespace std;
 
@@ -75,18 +77,22 @@ int main() {
 
   Data<int> intData(5, 10);
   cout << "sum1: " << intData.sum() << endl;
+  // output: sum1: 15
   string str1 = "Hello, ";
   string str2 = "World!";
   Data<string> stringData(str1, str2);
   cout << "sum2: " << stringData.sum() << endl;
+  // output: sum2: Hello, World!
   Data<Square> squareData(s1, s2);
   Square sum3 = squareData.sum();
   sum3.describe();
+  // output: Side: 15
 
   Vector v1(5, 10), v2(10, 20);
   Data<Vector> vectorData(v1, v2);
   Vector sum4 = vectorData.sum();
   sum4.describe();
+  // output: (15,30)
   cout << endl;
   return 0;
 }

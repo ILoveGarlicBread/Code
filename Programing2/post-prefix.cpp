@@ -1,3 +1,4 @@
+// postfix and prefix increment operators
 #include <iostream>
 using namespace std;
 
@@ -27,5 +28,9 @@ int main() {
   cout << "c after prefix increment: " << c.getCount() << endl;
   cout << "a before increment: " << old_a.getCount() << endl;
   cout << "a after postfixe increment: " << a.getCount() << endl;
+  // output: 
+  // c after prefix increment: 6
+  // a before increment: 5
+  // a after postfixe increment: 6
   return 0;
 }

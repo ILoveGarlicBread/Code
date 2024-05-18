@@ -1,3 +1,4 @@
+// Template and operator overload
 #include <iostream>
 using namespace std;
 
@@ -34,6 +35,8 @@ int main(){
   Data <Circle> circleData(circle1,circle2);
   Circle sumCircle=circleData.sum();
   sumCircle.describe();
+  // output: 15
+  // radius: 15
 
   return 0;
 }

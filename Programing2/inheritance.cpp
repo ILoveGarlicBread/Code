@@ -1,3 +1,4 @@
+// Inheritance
 #include <iostream>
 #include <memory>
 #include <string>
@@ -54,9 +55,13 @@ int main() {
   unique_ptr<Bird> bird1 = make_unique<Pigeon>("Pigeon", "seeds");
   unique_ptr<Bird> bird2 = make_unique<Duck>("Duck", "insects");
   bird1->fly();
+  // output : Pigeon can fly
   bird2->fly();
+  // output : Duck can not fly
   bird1->eat();
+  // output : Pigeon can eat seeds
   bird2->eat();
+  // output : Duck can eat insects
   cout << endl;
   return 0;
 }

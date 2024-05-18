@@ -1,3 +1,4 @@
+// Polymorphism in C++
 #include <iostream>
 using namespace std;
 class Shape {
@@ -46,6 +47,7 @@ int main() {
   Triangle t(2, 3);
   Canvas canvas(&s);
   canvas.describe();
+  // output: Area: 25
   cout << endl;
   return 0;
 }

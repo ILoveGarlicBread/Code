@@ -1,5 +1,5 @@
+// Vector is a sequence container that encapsulates dynamic size arrays.
 #include <iostream>
-
 #include <vector>
 using namespace std;
 
@@ -30,6 +30,16 @@ int main() {
   // front(), back()
   cout << "First and last element in vector: " << v.front() << " & " << v.back()
        << endl;
+  // output:
+  // 1  2  3  4  5
+  // 1  2  3  4  5  6
+  // Element at index 2: 3
+  // Modify element at index 0
+  // 0  2  3  4  5  6
+  // 0  2  3  4  5
+  // Size of vector: 5
+  // Capacity of vector: 8
+  // First and last element in vector: 0 & 5
   cout << endl;
   return 0;
 }

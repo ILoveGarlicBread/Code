@@ -129,3 +129,52 @@
   Only one direction.
   ~ Adjacent matrix:
     1 when there is a connection from i to j, 0 otherwise.
+
+
+** Planar graphs
+
+   *Def*
+    A graph is planar if it can be drawn in the plane without any edges crossing.
+    Example problem:
+    3 houses with 3 utilities: Gas, Water, Electricity.
+    Design pipes for G, W, E such that no pipes cross.
+    
+    /Example/
+    Circle graph, 
+
+** Planar Reprenstations
+   *Def*
+    A planar representation of a graph partitions the plane into a
+    finite number of regions (which are surrounded between
+    edges), which we call faces.
+    The degree of a face the number of edges created it.
+
+
+** Hand Shaking Theorem for Planar Graphs
+   $d(F)=2 \times |E|$
+
+** Euler's Formular Theorem
+   Consider a connected, planar graph $G=(V,E)$:
+   $|V| - |E|+|F|=2$
+   or $f = e - v + 2$
+
+   - Remove edges of a planar graph yields a planar graph
+   - Remove a edge between 2 faces:
+   -- the number of edges reduced by 1
+   -- the number of faces reduced by 1 
+   -- the nubmer of vertices remains 
+   - Base case G has 1 face then G is a acyclic (nocycle)
+   -- G is a tree
+*** Proving non-planarity
+    *Theorem (3n-6 rule)*
+    Let G be a connected planar graph with at least 2 edges. Then
+    $e <= 3v - 6$
+
+** Girth of a graph
+  *Def*
+   The girth of a graph is the length of its shortest cycle.
+  *Theorem*
+   Let G be a connected planar graph with the girth g.
+   If $e >= g/2|$, then: $e<= g/g-2(v-2)$
+   If $g = 4$, then $e<= 2v-4$
+

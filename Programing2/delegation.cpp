@@ -1,3 +1,7 @@
+// Delegation is a design pattern and technique where an object
+// handles a request by passing it to a second object, the delegate.
+// This approach allows an object to use the functionality of 
+// another object without being tightly coupled to its specific implementation.
 #include <iostream>
 using namespace std;
 class Date {
@@ -47,13 +51,16 @@ int main() {
   Date date(1, 1, 2000);
   Person John("John", &date);
   John.describe();
+  // output: Name: John
   Date date2(1, 1, 1999);
   Person Sam("Sam", &date2);
   Sam.describe();
+  // output: Name: Sam
   Person John1("John", &date);
   if (John == John1) {
     cout << "The same" << endl;
   } else {
     cout << "Not same " << endl;
   }
+  // output: The same
 }

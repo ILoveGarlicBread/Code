@@ -1,3 +1,4 @@
+// Dynamic casting
 #include <iostream>
 #include <typeinfo>
 #include <vector>
@@ -77,6 +78,7 @@ int main() {
   canvas.addShape(&c);
   cout << "Number of Squares: " << canvas.countshapetype(typeid(Square))
        << endl;
+  // Output: Number of Squares: 3
   cout << endl;
   return 0;
 }

@@ -1,4 +1,3 @@
-// C++ Program to Demonstrate
 // Operator Overloading
 #include <iostream>
 using namespace std;
@@ -43,7 +42,9 @@ int main() {
   Complex c3 = c1 + c2;
   Complex c4 = c1;
   c3.printnum();
+  // output: 12 + i9
   c4.printnum();
+  // output: 10 + i5
   cout << endl;
   return 0;
 }

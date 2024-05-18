@@ -17,6 +17,7 @@ nodeptr insertEnd(nodeptr head, int coef, int exp) {
   if (head == NULL) {
     return new_node;
   }
+  
   nodeptr current = head;
   while (current->next != NULL) {
     current = current->next;
