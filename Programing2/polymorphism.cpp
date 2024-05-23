@@ -7,15 +7,12 @@ public:
 };
 class Square : public Shape {
   int side;
-
 public:
   Square(int s) { this->side = s; }
   float area() { return side * side; }
 };
-
 class Rectangle : public Shape {
   int width, height;
-
 public:
   Rectangle(int w, int h) {
     this->width = w;
@@ -25,7 +22,6 @@ public:
 };
 class Triangle : public Shape {
   int base, height;
-
 public:
   Triangle(int b, int h) {
     this->base = b;
@@ -35,12 +31,10 @@ public:
 };
 class Canvas {
   Square *s;
-
 public:
   Canvas(Square *s) : s(s) {}
   void describe() { cout << "Area: " << s->area() << endl; }
 };
-
 int main() {
   Square s(5);
   Rectangle r(4, 3);

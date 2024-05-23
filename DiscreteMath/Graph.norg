@@ -178,3 +178,46 @@
    If $e >= g/2|$, then: $e<= g/g-2(v-2)$
    If $g = 4$, then $e<= 2v-4$
 
+
+** Eulerian circuit & Hamiltonian cycle
+*** Eulerian circuit
+    *Def*
+    Given a multigraph $G=(V,E)$:
+    ~ A simple circuit containing all edges of $G$ is called an Euleriran circuiti of $G$.
+      (circuit: starting point = ending point)
+    ~ A simple path containing all edges of $G$ is called an Eulerian path of $G$.
+**** Theorem
+    Given a connected multigraph (undirected) $G=(V,E)$. Then:
+    ~ $G$ has an Eulerian circuit iff every vertex has even degree.
+    ~ $G$ has an Eulerian path iff has exactly two vertices of odd degrees.
+
+*** Hamiltonian cycle
+    *Def* Given a graph $G=(V,E)$:
+    ~ A simple path passing through all vertices exactly one is called a Hamiltonian path.
+    ~ A simple cycle passing through all vertices exactly one is called a Hamiltonian cycle.
+**** Remark
+     $K_{m,n}$ has a Hamiltonian cycle iff $m=n>=2$.
+
+*** Greycode
+
+    *Def*
+    Given a circle, we split the circle into $2^n$ sectors(arcs)
+    A greycode is a labeling of the arcs of the circle with all $2^n$ binary strings
+    of length n such that adjacent arcs are labeled with strings differing exactly
+    in 1 bit.
+**** Theorem
+     A labeling is a greycode iff it creates (in a linear order of adjacent arcs) a 
+     Hamilton cycle in $Q_n$.
+**** Constant weight greycode
+
+*** Theorm: Sufficient condition
+**** Dirac's Theorem
+
+**** Ore's Theorem
+
+
+
+
+
+
+
