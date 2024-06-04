@@ -1,0 +1,19 @@
+* Trees and Applications
+** Applications
+   - Binary search trees (Huffman code)
+   - Balanced trees (AVL trees)
+   - Parse trees (Matrix-tree theorem)
+   - Spanning trees
+   - Decision trees
+   - Labeled trees
+** Definition
+   A simple undirected graph is called a tree if it is connected & acyclic (no cycle).
+   A leaf is a vertex of degree 1.
+   A node not a leaf is called an internal node.
+*** Theorem 
+    Tree $T=(V,E)$ be a tree: 
+    Then T has at least 1 leaf.
+    Removing a leaf from a tree yields a tree.
+
+
+

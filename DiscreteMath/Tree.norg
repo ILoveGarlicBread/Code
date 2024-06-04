@@ -1,0 +1,76 @@
+* Trees and Applications
+** Applications
+   - Binary search trees (Huffman code)
+   - Balanced trees (AVL trees)
+   - Parse trees (Matrix-tree theorem)
+   - Spanning trees
+   - Decision trees
+   - Labeled trees
+** Definition
+   A simple undirected graph is called a tree if it is connected & acyclic (contains no cycle).
+   A leaf is a vertex of degree 1.
+   A node not a leaf is called an internal node.
+** Theorem 
+   Tree $T=(V,E)$: 
+   - Then T has at least 1 leaf.
+   - Removing a leaf from a tree yields a tree.
+   - $V = E + 1$
+** Equivalent statements for trees
+   $G=(V,E)$ be a simple graph. The following are equivalent:
+   ~ $G$ is a tree.
+   ~ $G$ is connected & $V = E + 1$ .
+   ~ $G$ is acyclic & $V = E + 1$.
+   ~ There is exactly one simple path from any two different virtices $u$ & $v$ of $G$.
+     (more than one would mean $G$ is non-acyclic, no path -> $G$ is disconnected)
+   ~ $G$ in minimally conneted -> $G$ is connected & removing any edges 
+     from $G$ disconnects it.
+   ~ $G$ is maximally acyclic -> $G$ is acyclic & adding any edge to it 
+     creates a cycle.
+
+* Rooted Trees
+** Definition
+   A rooted tree is a tree in which one vertex is designated as a root
+   and every edge is directed away from the root.
+   A rooted tree $T=(V,E)$:
+   - If $(u,v)$ in $E$, then $u$ is the parent of $v$/ $v$ is a child of $u$.
+   - Vertices with the same parent are siblings.
+   - Ancestor of a vertex are vertices on the path from the root to that vertex.
+   - Descendants of $v$ are vertices that have $v$ as an ancestor.
+   - Rooted subtree at $v$ is the subtree of $T$ with root $v$.
+
+* m-ary trees
+** Definition
+   - A rooted tree is called a m-ary tree if each node of it has at most $m$
+     children.
+   - A full m-ary tree is an m-ary tree such that each internal node has
+     exactly children.
+   - A binary tree is a 2-ary tree.
+     A full binary tree is a full 2-ary tree.
+   - A complete m-ary tree is a full m-ary tree in which all levels
+     except possibly the last one are completely filled & the last
+     level has all its nodes filled from left to right.
+** Theorem
+   Given a full m-ary tree $T=(V,E)$ with $n$ number of vertices 
+   $i$ internal nodes & $l$ leaves. Then: 
+   ~ $n = V = i*m+1$
+   ~ $l = n - i = (m-1)*i + 1$
+     Consequently, a full binary tree  has $(2n+1)$ vertices
+     with $n$ internal nodes & $(n+1)$ leaves.
+
+** Theorem 
+   In a m-ary tree with hight $h$ & $l$ leaves: 
+   - $l <= m$
+   - $h >= [log_{m}l]$ 
+
+** Corollary
+   The last number of companions to locate all elements in a 
+   list of length $n$z in $[log(n+1)]$
+* Decisioin Trees
+  - A decision tree is a tre eshowing series of decisions which 
+    should be made to find an object with a certain property.
+  - It is a rooted tree such that 
+  -- Internal node corresponds to a decision.
+  -- A possible solution to the problem corresponds to a path
+     from the root to a leaf of the decision tree.
+
+
