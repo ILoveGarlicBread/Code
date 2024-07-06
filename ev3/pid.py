@@ -2,37 +2,35 @@
 
 from pybricks.ev3devices import Motor, ColorSensor
 from pybricks.parameters import Port, Direction
+from pybricks.tools import wait
 from pybricks.robotics import DriveBase
 
-def follow_line_motors_PID():
-    left_motor  = Motor(Port.B, Direction.COUNTERCLOCKWISE)
-    right_motor = Motor(Port.C, Direction.CLOCKWISE)
-    left_sensor     = ColorSensor(Port.S1)
-    right_sensor    = ColorSensor(Port.S2)
-    
+# Initialize the motors.
+left_motor = Motor(Port.B,Direction.COUNTERCLOCKWISE)
+right_motor = Motor(Port.C)
 
-    BLACK = 3 
-    WHITE = 62 
-    threshold   = (BLACK + WHITE) / 2 
-    DRIVE_SPEED = 500
-    P_GAIN      = 5
-    D_GAIN      = 5
-    derivative_right  = 0 
-    derivative_left   = 0
-    last_error_left  = 0
-    last_error_right = 0
+# Initialize the color sensor.
+left_sensor = ColorSensor(Port.S2)
+right_sensor = ColorSensor(Port.S3)
 
-    while True:
-        error_left = left_sensor.reflection() - threshold
-        error_right= right_sensor.reflection() - threshold
-        derivative_left = error_left - last_error_left
-        derivative_right = error_right - last_error_right
+# Calculate the light threshold. Choose values based on your measurements.
+BLACK = 9
+WHITE = 85
+threshold = (BLACK + WHITE) / 2
 
-        turn_rate_lm  = P_GAIN  * error_left +D_GAIN * derivative_left
-        turn_rate_rm  = P_GAIN  * error_right + D_GAIN * derivative_right
-        left_motor.run(DRIVE_SPEED + turn_rate_lm)
-        right_motor.run(DRIVE_SPEED + turn_rate_rm)
-        last_error_left = error_left
-        last_error_right = error_right
+# Set the drive speed at # millimeters per second.
+DRIVE_SPEED = 500
 
-follow_line_motors_PID()
+PROPORTIONAL_GAIN = 5
+
+while True:
+    left_error = left_sensor.reflection() - threshold
+    right_error = right_sensor.reflection() - threshold
+
+    left_turn_rate = PROPORTIONAL_GAIN *left_error
+    right_turn_rate = PROPORTIONAL_GAIN *right_error
+
+    left_motor.run(DRIVE_SPEED + left_turn_rate)
+    right_motor.run(DRIVE_SPEED + right_turn_rate)
+
+

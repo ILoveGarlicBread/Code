@@ -1,12 +1,12 @@
 #!/usr/bin/env pybricks-micropython
 
 from pybricks.ev3devices import Motor, ColorSensor
-from pybricks.parameters import Port
+from pybricks.parameters import Port, Direction
 from pybricks.tools import wait
 from pybricks.robotics import DriveBase
 
 # Initialize the motors.
-left_motor = Motor(Port.B)
+left_motor = Motor(Port.B,Direction.COUNTERCLOCKWISE)
 right_motor = Motor(Port.C)
 
 # Initialize the color sensor.
