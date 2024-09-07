@@ -1,26 +1,38 @@
 #!/usr/bin/env pybricks-micropython
 
+import threading
 from pybricks.ev3devices import Motor, ColorSensor
 from pybricks.parameters import Port, Direction
 from pybricks.tools import wait
 from pybricks.robotics import DriveBase
 
+#########################################################################
+################################SET UP##################################
+#########################################################################
+
 # Initialize the motors.
-left_motor = Motor(Port.B, Direction.COUNTERCLOCKWISE)
-right_motor = Motor(Port.C)
+left_motor = Motor(Port.C, Direction.COUNTERCLOCKWISE)
+left_motor.reset_angle(0)
+right_motor = Motor(Port.B)
+right_motor.reset_angle(0)
+arm_motor = Motor(Port.A)
+robot = DriveBase(left_motor, right_motor, 55.5, 20)
 
 # Initialize the color sensor.
 left_sensor = ColorSensor(Port.S2)
 right_sensor = ColorSensor(Port.S3)
 
-# Calculate the light threshold. Choose values based on your measurements.
+########################################################################
+###############################FUNCTIONS################################
+########################################################################
+
 BLACK = 9
 WHITE = 85
 threshold = (BLACK + WHITE) / 2
 
 
-def PID_for_degree(degree):
-    DRIVE_SPEED = 400
+def PID_for_degree(speed, degree):
+    DRIVE_SPEED = speed
 
     PROPORTIONAL_GAIN = 5
     DERIVATIVE_GAIN = 2
@@ -52,5 +64,16 @@ def PID_for_degree(degree):
         if right_motor.angle() >= degree:
             break
 
+def run_distance(milimeters):
+    robot.straight(milimeters)
+    robot.stop()
 
-PID_for_degree(1000)
+def rotate(degree):
+    robot.turn(degree)
+    robot.stop()
+
+########################################################################
+#################################RUN####################################
+########################################################################
+
+
