@@ -1,0 +1,1 @@
+savedcmd_/home/lam/Code/Year3/OperatingSystem/simplemodule/Module.symvers :=  scripts/mod/modpost -M  -a    -N  -o /home/lam/Code/Year3/OperatingSystem/simplemodule/Module.symvers -n -T /home/lam/Code/Year3/OperatingSystem/simplemodule/modules.order -i Module.symvers -e 

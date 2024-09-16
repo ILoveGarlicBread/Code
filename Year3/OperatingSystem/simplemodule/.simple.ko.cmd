@@ -1,0 +1,1 @@
+savedcmd_/home/lam/Code/Year3/OperatingSystem/simplemodule/simple.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/lam/Code/Year3/OperatingSystem/simplemodule/simple.ko /home/lam/Code/Year3/OperatingSystem/simplemodule/simple.o /home/lam/Code/Year3/OperatingSystem/simplemodule/simple.mod.o
