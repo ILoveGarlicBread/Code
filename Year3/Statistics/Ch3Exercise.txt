@@ -1,0 +1,8 @@
+# Exercise 3.1
+a.
+Range:  22
+Variance  62.666666666666664
+Standard deviation 7.916228058025278
+
+b.
+
