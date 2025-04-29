@@ -1,38 +1,43 @@
+package exercise3;
+
 import java.util.HashSet;
 import java.util.Set;
 
-public class Machine{
+public class Machine {
 
   private String name;
   private Set<Part> parts;
-  public Machine(String inputName){
+
+  public Machine(String inputName) {
     this.name = inputName;
     this.parts = new HashSet<>();
-    
+
   }
-  public String getName(){
+
+  public String getName() {
     return this.name;
   }
 
-  public Part searchPart(String partName){
-    for (Part part : parts){
-      if(part.getName().equals(partName)){
+  public Part searchPart(String partName) {
+    for (Part part : parts) {
+      if (part.getName().equals(partName)) {
         return part;
       }
     }
     return null;
   }
-  public void addPart(String inputName, int inputNumber, int inputPrice){
-	  Part part = new Part(inputName,inputNumber,inputPrice);
-	  parts.add(part);
-  }
-  public void addPart(Part part){
+
+  public void addPart(String inputName, int inputNumber, int inputPrice) {
+    Part part = new Part(inputName, inputNumber, inputPrice);
     parts.add(part);
   }
-  public Set<Part> returnAllParts(){
+
+  public void addPart(Part part) {
+    parts.add(part);
+  }
+
+  public Set<Part> returnAllParts() {
     return parts;
   }
-	 
-	  
-  
+
 }
