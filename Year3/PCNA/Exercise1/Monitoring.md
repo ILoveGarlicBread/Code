@@ -26,3 +26,29 @@ use traceroute -I to determine routers:
 ```
 traceroute -I ict-ffm.de
 ```
+
+# Monitoring network protocol
+Clear ARP cache on host 1 and router 1
+```
+sudo ip neigh flush all
+
+```
+On host 1:
+```
+curl http://ict-ffm.de
+```
+
+## Protocol stack of HTTP respone
+from the bottom:
+layer 2: 
+ethernet 
+- header size: 14 bytes
+- trailer size: 4 
+layer 3:
+ip protocol header size: 20 to 60
+layer 4:
+tcp protocol header size: 20 to 60
+layer 7:
+http 
+
+

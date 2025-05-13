@@ -1,8 +1,10 @@
 # 2:
 ## b: Configuration
 ### Configuring hosts:
+group 5
 Host1:
 ```
+sudo ip link set eth0 down
 sudo ip addr add 192.168.i.10/24 broadcast 192.168.i.255 dev eth0
 sudo ip link set eth0 up
 sudo ip route add default via 192.168.i.1
@@ -26,6 +28,7 @@ sudo ip route add default via 192.168.i.1
 ### Configuring router:
 Lan interface:
 ```
+sudo ifconfig enp1s0f0 netmask 255.255.255.0
 sudo ip addr add 192.168.i.1/24 dev eth0
 sudo ip link set eth0 up
 ```
@@ -102,7 +105,7 @@ Use traceroute:
 traceroute -I ict-ffm.de
 # the flag -I stand for ICMP, by default it uses udp packets
 ```
-
+result 13 hops for hosts, 12 for router
 ### Identify the IP addresses of medusa.fh-frankfurt.de
 ```
 nslookup medusa.fh-frankfurt.de
