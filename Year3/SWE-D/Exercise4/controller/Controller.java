@@ -25,7 +25,7 @@ public class Controller {
     for (User user : users.values()) {
       for (Subscription s : user.getSubscriptions()) {
         if (s.getWebsite().checkForUpdate()) {
-          Notification notification = new Notification(s, "Website Updated!");
+          Notification notification = new Notification(s, "Website updated");
           notification.send();
         }
       }
