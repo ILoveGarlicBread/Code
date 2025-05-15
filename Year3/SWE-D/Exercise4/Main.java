@@ -1,0 +1,22 @@
+import controller.Controller;
+import java.util.concurrent.TimeUnit;
+
+public class Main {
+  public static void main(String[] args) {
+    Controller controller = new Controller();
+
+    controller.registerUser("U001", "Lam", "luongbaolam1303@gmai.com", "1234567890");
+    controller.subscribe("U001", "http://bing.com", 15, "EMAIL");
+    controller.subscribe("U001", "http://youtube.com", 15, "SMS");
+    controller.subscribe("U001", "http://google.com", 15, "EMAIL");
+    while (true) {
+      controller.checkWebsites();
+      try {
+
+        TimeUnit.SECONDS.sleep(2);
+      } catch (InterruptedException ex) {
+        Thread.currentThread().interrupt();
+      }
+    }
+  }
+}
