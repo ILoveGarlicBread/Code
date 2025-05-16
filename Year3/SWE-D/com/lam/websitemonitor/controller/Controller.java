@@ -11,12 +11,12 @@ public class Controller {
     users.put(id, new User(id, name, email, phone));
   }
 
-  public void subscribe(String userId, String url, int frequency, String channelStr) {
+  public void subscribe(String userId, String websiteName, String url, int frequency, String channelStr) {
     User user = users.get(userId);
     if (user == null)
       return;
 
-    Website website = new Website(url);
+    Website website = new Website(websiteName, url);
     Subscription subscription = new Subscription(website, frequency, channelStr);
     user.addSubscription(subscription);
   }

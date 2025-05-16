@@ -12,9 +12,6 @@ public class Subscription {
   enum NotificationChannel {
     EMAIL,
     SMS,
-    SMOKE_SIGNAL
-    // SEMAPHORE,
-    // MORSE_CODE,
   }
 
   private LocalDateTime lastChecked;

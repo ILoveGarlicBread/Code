@@ -14,8 +14,8 @@ public class Notification {
   }
 
   public void send() {
-    System.out.println("[" + timestamp + "] Notification via " +
-        subscription.getChannel() + ": " + message +
+    System.out.println("[" + timestamp + "] Notification (" +
+        subscription.getChannel() + "): " + message +
         " for " + subscription.getWebsite().getUrl());
   }
 }

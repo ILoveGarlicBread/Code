@@ -1,13 +1,17 @@
 package model;
 
 import java.util.Random;
+import util.*;
 
 public class Website {
+    private String name;
     private String url;
-    private String lastSnapshot;
+    private String lastSnapshot = "";
 
-    public Website(String url) {
+    public Website(String name, String url) {
         this.url = url;
+        this.name = name;
+        WebsitesUtils.downloadWebPageContent(name, url);
     }
 
     public boolean checkForUpdate() {
