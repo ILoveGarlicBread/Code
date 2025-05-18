@@ -1,8 +1,9 @@
 package controller;
 
 import model.*;
-
+import util.*;
 import java.util.*;
+import java.io.IOException;
 
 public class Controller {
   private Map<String, User> users = new HashMap<>();
@@ -15,7 +16,6 @@ public class Controller {
     User user = users.get(userId);
     if (user == null)
       return;
-
     Website website = new Website(websiteName, url);
     Subscription subscription = new Subscription(website, frequency, channelStr);
     user.addSubscription(subscription);

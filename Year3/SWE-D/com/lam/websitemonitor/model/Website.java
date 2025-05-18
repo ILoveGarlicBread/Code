@@ -1,24 +1,27 @@
 package model;
 
+import java.io.IOException;
 import java.util.Random;
 import util.*;
 
 public class Website {
     private String name;
     private String url;
-    private String lastSnapshot = "";
 
     public Website(String name, String url) {
         this.url = url;
         this.name = name;
-        WebsitesUtils.downloadWebPageContent(name, url);
+        try {
+            WebsitesUtils webUtils = new WebsitesUtils(name, url);
+            webUtils.downloadWebPageContent();
+        } catch (InterruptedException | IOException e) {
+            System.out.println("Error: " + e);
+        }
     }
 
     public boolean checkForUpdate() {
-        boolean updated = new Random().nextBoolean();
-        if (updated) {
-            lastSnapshot = String.valueOf(System.currentTimeMillis());
-        }
+        WebsitesUtils webUtils = new WebsitesUtils(name, url);
+        boolean updated = webUtils.compareWebPageContent();
         return updated;
     }
 

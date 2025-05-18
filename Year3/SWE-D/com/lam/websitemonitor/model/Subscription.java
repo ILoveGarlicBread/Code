@@ -6,7 +6,7 @@ public class Subscription {
   private static int counter = 0;
   private final String subscriptionId;
   private Website website;
-  private int frequency;
+  private int frequency; // minutes
   private NotificationChannel channel;
 
   enum NotificationChannel {
