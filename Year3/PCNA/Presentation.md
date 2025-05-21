@@ -23,11 +23,12 @@ How it solve HTTP1.1's problems
 Does head of line blocking still occur?
 
 To solve that, HTTP/2 uses multiplexing.
+In simple terms, multiplexing means combining multiple streams into one connection. 
 Think of it like a multi-lane highway instead of a one-lane road. 
 With HTTP/1.1, you had to wait behind slow traffic, sharing a single lane with others. 
 With HTTP/2 multiplexing, everyone gets their own lane and moves side by side, even if some are slower than the others.
 This means the browser can send multiple requests at once — and get multiple responses in parallel — all in one TCP connection.
-In simple terms, multiplexing means combining multiple streams into one connection. 
+
 Does this fully solve Hob?
 Sort of
 it solve hob only  on application layer
@@ -48,7 +49,7 @@ These frames can be sent out of order, TCP will ensure they show up at the recei
 When the server get a HEADER frame, it creates a new stream using the same stream ID as the request.
 It starts by sending back its own HEADERS frame, which contains the response status and headers.
 After that, the response body is sent in DATA frames.
-Thanks to multiplexing, the server can interleave frames from multiple streams, 
+In short, thanks to multiplexing, the server can interleave frames from multiple streams, 
 sending chunks of different responses over the same connection simultaneously.
 
 
