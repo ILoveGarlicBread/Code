@@ -17,37 +17,41 @@ and also more connections means more resources used on both client and server si
 
 
 # What is Multiplexing
-Definition
-Anology
-How it solve HTTP1.1's problems 
-Does head of line blocking still occur?
-
-To solve that, HTTP/2 uses multiplexing.
-In simple terms, multiplexing means combining multiple streams into one connection. 
-Think of it like a multi-lane highway instead of a one-lane road. 
-With HTTP/1.1, you had to wait behind slow traffic, sharing a single lane with others. 
-With HTTP/2 multiplexing, everyone gets their own lane and moves side by side, even if some are slower than the others.
-This means the browser can send multiple requests at once — and get multiple responses in parallel — all in one TCP connection.
-
-Does this fully solve Hob?
-Sort of
-it solve hob only  on application layer
-Hob still occure on transport layer due to TCP's sequential nature.
-
-
-# How does it work
-Single TCP connection
-Streams and frames
-Interleaving requests and response
-
 So the main ideas of how HTTP/2 works is
-HTTP/2 opens only one TCP connection between the client (e.g., browser) and the server.
 HTTP/2 divides the TCP connection into streams
 Streams are identified by a unique Stream ID.
 The actual data (headers, body, etc.) is split into frames, each of them are asigned a stream ID based on their streams.
 HTTP/2 can interleave frames from different streams on the same connection.
 This means one chunk of a response for stream 1, followed by a chunk from stream 3, and so on.
 No waiting for one full request to finish before starting the next.
+
+
+Does this fully solve Hob?
+Sort of
+it solve hob only  on application layer
+Hob still occure on transport layer due to TCP's sequential nature.
+controller
+
+# How does it work
+
+Think of it like a multi-lane highway instead of a one-lane road. 
+With HTTP/1.1, you had to wait behind slow traffic, sharing a single lane with others. 
+With HTTP/2 multiplexing, everyone gets their own lane and moves side by side, even if some are slower than the others.
+This means the browser can send multiple requests at once — and get multiple responses in parallel — all in one TCP connection.
+Does this fully solve Hob?
+Sort of
+it solve hob only  on application layer
+Hob still occure on transport layer due to TCP's sequential nature.
+controller
+
+Does this fully solve Hob?
+Sort of
+it solve hob only  on application layer
+Hob still occure on transport layer due to TCP's sequential nature.
+controller
+
+
+
 
 
 # Demonstration in wireshark
