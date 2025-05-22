@@ -40,17 +40,14 @@ Single TCP connection
 Streams and frames
 Interleaving requests and response
 
-First, HTTP/2 uses a single TCP connection between the browser and the server.
-Inside that connection, it creates multiple streams — and each stream can carry one request and its response.
-These streams are broken into frames — small chunks of data — that are sent over the connection.
-To know which frames belong to which streams, HTTP2 use streams IDs.
-Streams IDS are 32 bit numbers that are store in each frame header.
-These frames can be sent out of order, TCP will ensure they show up at the receiver in the exact order they are sent.
-When the server get a HEADER frame, it creates a new stream using the same stream ID as the request.
-It starts by sending back its own HEADERS frame, which contains the response status and headers.
-After that, the response body is sent in DATA frames.
-In short, thanks to multiplexing, the server can interleave frames from multiple streams, 
-sending chunks of different responses over the same connection simultaneously.
+So the main ideas of how HTTP/2 works is
+HTTP/2 opens only one TCP connection between the client (e.g., browser) and the server.
+HTTP/2 divides the TCP connection into streams
+Streams are identified by a unique Stream ID.
+The actual data (headers, body, etc.) is split into frames, each of them are asigned a stream ID based on their streams.
+HTTP/2 can interleave frames from different streams on the same connection.
+This means one chunk of a response for stream 1, followed by a chunk from stream 3, and so on.
+No waiting for one full request to finish before starting the next.
 
 
 # Demonstration in wireshark

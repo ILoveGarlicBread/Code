@@ -3,26 +3,31 @@ package model;
 import java.time.LocalDateTime;
 
 public class Subscription {
-  private static int counter = 0;
-  private final String subscriptionId;
   private Website website;
   private int frequency; // minutes
   private NotificationChannel channel;
+  private User user;
 
   enum NotificationChannel {
     EMAIL,
     SMS,
   }
 
-  private LocalDateTime lastChecked;
-
-  public Subscription(Website website, int frequency, String channelStr) {
-    this.subscriptionId = "" + (++counter);
+  public Subscription(User user, Website website) {
+    this.user = user;
     this.website = website;
-    this.frequency = frequency;
-    this.channel = NotificationChannel.valueOf(channelStr);
-    this.lastChecked = LocalDateTime.now();
+    website.attachObserver(this.user);
   }
+
+  public void cancel() {
+    website.detachObserver(user);
+  }
+
+  // public Subscription(Website website, int frequency, String channelStr) {
+  // this.website = website;
+  // this.frequency = frequency;
+  // this.channel = NotificationChannel.valueOf(channelStr);
+  // }
 
   public Website getWebsite() {
     return website;

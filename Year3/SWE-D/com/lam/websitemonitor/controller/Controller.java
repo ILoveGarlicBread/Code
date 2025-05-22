@@ -17,7 +17,8 @@ public class Controller {
     if (user == null)
       return;
     Website website = new Website(websiteName, url);
-    Subscription subscription = new Subscription(website, frequency, channelStr);
+    // Subscription subscription = new Subscription(website, frequency, channelStr);
+    Subscription subscription = new Subscription(user, website);
     user.addSubscription(subscription);
   }
 
@@ -25,8 +26,9 @@ public class Controller {
     for (User user : users.values()) {
       for (Subscription s : user.getSubscriptions()) {
         if (s.getWebsite().checkForUpdate()) {
-          Notification notification = new Notification(s, "Website updated");
-          notification.send();
+          // Notification notification = new Notification(s, "Website updated");
+          // notification.send();
+
         }
       }
     }

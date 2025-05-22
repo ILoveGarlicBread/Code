@@ -49,12 +49,13 @@ public class WebsitesUtils {
       String previousSnapshot = Files.readString(file);
 
       if (!response.equals(previousSnapshot)) {
-        Files.writeString(readPath, currentSnapshot, StandardOpenOption.TRUNCATE_EXISTING);
+        Files.writeString(file, currentSnapshot, StandardOpenOption.TRUNCATE_EXISTING);
         return true;
       } else {
         return false;
       }
     }
+    return false;
 
   }
 }

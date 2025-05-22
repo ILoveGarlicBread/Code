@@ -1,8 +1,11 @@
 package model;
 
 import java.util.*;
+import observer.*;
+import observer.Observer;
+import java.time.LocalDateTime;
 
-public class User {
+public class User implements Observer {
   private String userId, name, email, phoneNumber;
   private List<Subscription> subscriptions = new ArrayList<>();
 
@@ -19,5 +22,11 @@ public class User {
 
   public List<Subscription> getSubscriptions() {
     return subscriptions;
+  }
+
+  @Override
+  public void update(String websiteName, String message) {
+    System.out.println("[" + LocalDateTime.now() + "]:" + message + websiteName);
+
   }
 }
