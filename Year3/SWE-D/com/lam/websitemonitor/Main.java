@@ -1,4 +1,4 @@
-import controller.*;
+import controller.Controller;
 import java.util.concurrent.TimeUnit;
 import java.io.IOException;
 import util.*;
