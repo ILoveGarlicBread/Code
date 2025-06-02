@@ -10,12 +10,11 @@ import java.util.List;
 public class Website implements Subject {
     private String name;
     private String url;
-    private List<Observer> observers;
+    private final List<Observer> observers = new ArrayList<Observer>();
 
     public Website(String name, String url) {
         this.url = url;
         this.name = name;
-
         try {
             WebsitesUtils webUtils = new WebsitesUtils(name, url);
             webUtils.downloadWebPageContent();
@@ -26,8 +25,9 @@ public class Website implements Subject {
 
     public boolean checkForUpdate() {
         WebsitesUtils webUtils = new WebsitesUtils(name, url);
+        CompareMethod method = new HTMLCompareImpl();
         try {
-            boolean updated = webUtils.compareWebPageContent();
+            boolean updated = webUtils.compareWebPageContent(method);
             Notify("Content changed.");
             return updated;
         } catch (InterruptedException | IOException e) {
@@ -36,17 +36,14 @@ public class Website implements Subject {
         return false;
     }
 
-    @Override
     public void attachObserver(Observer o) {
-        observers.add(o);
+        this.observers.add(o);
     }
 
-    @Override
     public void detachObserver(Observer o) {
-        observers.remove(o);
+        this.observers.remove(o);
     }
 
-    @Override
     public void Notify(String message) {
         for (Observer o : observers) {
             o.update(name, message);
