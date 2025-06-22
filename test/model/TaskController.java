@@ -17,8 +17,7 @@ public class TaskController extends HttpServlet {
             throws ServletException, IOException {
         String action = request.getParameter("action");
         HttpSession session = request.getSession();
-        ServletContext context = getServletContext();
-        Map<String, Machine> machines = (Map<String, Machine>) context.getAttribute("machinesMap");
+        Map<String, Machine> machines = new HashMap<>();
         if (machines == null) {
             machines = new HashMap<>();
             session.setAttribute("machines", machines);
