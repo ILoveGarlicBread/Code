@@ -32,12 +32,12 @@ public class Machine {
     parts.add(part);
   }
 
-  public Set<String> queryPartNames() {
-    Set<String> result = new HashSet<>();
+  public String queryPartNames() {
+    StringBuilder result = new StringBuilder();
     for (Part part : this.parts) {
-      result.add(part.getName());
+      result.append(part.getName());
     }
-    return result;
+    return result.toString();
   }
 
   public void addPart(Part part) {
