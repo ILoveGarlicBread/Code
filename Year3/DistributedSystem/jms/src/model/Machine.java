@@ -32,14 +32,6 @@ public class Machine {
     parts.add(part);
   }
 
-  public String queryPartNames() {
-    StringBuilder result = new StringBuilder();
-    for (Part part : this.parts) {
-      result.append(part.getName());
-    }
-    return result.toString();
-  }
-
   public void addPart(Part part) {
     parts.add(part);
   }

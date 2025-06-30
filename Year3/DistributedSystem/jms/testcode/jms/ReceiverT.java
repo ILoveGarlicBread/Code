@@ -20,7 +20,6 @@ public class ReceiverT {
       Topic topic = (Topic) context.lookup("dynamicTopics/topic1");
 
       TopicSubscriber subscriber = session.createSubscriber(topic);
-      subscriber.setMessageListener(new MyListener());
       TextMessage message = (TextMessage) subscriber.receive();
       System.out.println("Message Received: " + message.getText());
 

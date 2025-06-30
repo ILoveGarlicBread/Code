@@ -18,15 +18,15 @@ public class Server implements MessageListener {
   public void onMessage(Message message) {
     try {
       TextMessage textMessage = (TextMessage) message;
-      String reply = "";
       String[] input = textMessage.getText().split(" ");
       String action = input[0];
       String machineName = input[1];
-      if (machines.containsKey(machineName)) {
-        Machine machine = machines.get(machineName);
+      if (machines.containsKey("machineName")) {
+        Machine machine = machines.get("machineName");
         switch (action) {
           case "add":
-            machine.addPart();
+            
+            machine.addPart()
 
         }
 
@@ -44,12 +44,17 @@ public class Server implements MessageListener {
     Machine boat = new Machine("Boat");
     machines.put("Car", car);
     machines.put("Boat", boat);
+    // hold configuration properties for JNDI
     Hashtable<String, String> properties = new Hashtable<String, String>();
+    // tells JNDI how to connect to ActiveMQ and interpret the resource names
     properties.put(Context.INITIAL_CONTEXT_FACTORY, "org.apache.activemq.jndi.ActiveMQInitialContextFactory");
     properties.put(Context.PROVIDER_URL, "tcp://localhost:61616");
+    // Create Context to lookup topics, conn factory and stuff
     Context context = new InitialContext(properties);
     TopicConnectionFactory connFactory = (TopicConnectionFactory) context.lookup("ConnectionFactory");
     TopicConnection conn = connFactory.createTopicConnection();
+    // create session for sending and receiving messages: false bool for
+    // transaction, message are auto acknoledege
     TopicSession session = conn.createTopicSession(false, Session.AUTO_ACKNOWLEDGE);
     Topic clientRequest = (Topic) context.lookup("dynamicTopics/clientRequest");
     Topic serverReply = (Topic) context.lookup("dynamicTopics/serverReply");
