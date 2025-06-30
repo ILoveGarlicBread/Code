@@ -1,3 +1,6 @@
+// Author: Lam
+// Date: 19/5/2025
+// Description: Approach light
 #define OFF HIGH
 #define ON LOW
 #define LED1 5
@@ -21,19 +24,18 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   for (int pin = 5; pin < 13; pin ++){
-    for(int i = 0; i < 15; i++){
-      while(digitalRead(SWCH) == ON){
+          while(digitalRead(SWCH) == ON){
         delay(10);
       }
       digitalWrite(pin, ON);
       delay(2);
       digitalWrite(pin, OFF);
-      delay(2);
+      delay(60);
+      delayMicroseconds(500);
       while (digitalRead(SWCH) == ON) {
         delay(10);
       }
-    }
-  delayMicroseconds(2500);
+    
   }
  }
  

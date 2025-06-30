@@ -1,3 +1,6 @@
+// Author: Lam
+// Date: 3/6/2025
+// Description: Intterupt
 #define OFF HIGH
 #define ON LOW
 #define LED1 5
@@ -42,13 +45,11 @@ void loop() {
     digitalWrite(LED1, OFF);
     digitalWrite(LED8, OFF);
   for (int pin = 5; pin < 13; pin ++){
-    for(int i = 0; i < 15; i++){
       digitalWrite(pin, ON);
       delay(2);
       digitalWrite(pin, OFF);
-      delay(2);
-    }
-  delayMicroseconds(2500);
+      delay(60);
+      delayMicroseconds(500);
     }
   } else{
     for (int pin = 6; pin < 12; pin ++ ){

@@ -55,22 +55,22 @@ void loop() {
 int sequenceLength = map(potVal, 0, 1023, 1, 9);
 const int sequenceTime = 500;
 int timePerLed = sequenceTime / sequenceLength;
-int ledDelay = timePerLed/2;
+int ledDelay = timePerLed - 2;
   if(runMode){
-  for (int i = 0; i < 8; i++){
-    int pin = 5 + i;
-    if(i<sequenceLength ){
-    for(int j = 0; j<15; j++ ){
-      digitalWrite(pin, ON);
-      delay(ledDelay);
-      digitalWrite(pin, OFF);
-      delay(ledDelay);
-    }
-    } else{
+  for(int pin = 5; pin < 13; pin++){
+    pinMode(pin,OUTPUT);
+    digitalWrite(pin,OFF);
+  }
+  for (int i = 0; i<sequenceLength; i++ ){
+    int pin = 5+i;
+    digitalWrite(pin, ON);
+    delay(2);
     digitalWrite(pin, OFF);
-    }
-  delayMicroseconds(2500);
-    }
+    delay(ledDelay );
+    
+  }
+
+  
   } else{
   potVal = analogRead(potPin);
   int sequenceLength = map(potVal, 0, 1023, 1, 9);

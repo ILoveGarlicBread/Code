@@ -1,6 +1,9 @@
 1. 
-The number of defects remaining in a program at the time of delivery can affect product support.
 Higher defects lead to increased support requirements, while fewer defects result in better product support.
+Defects types: 
+- Functional
+- Non functional: performance
+- Security
 
 2.
 Pros:
